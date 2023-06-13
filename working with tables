@@ -1,0 +1,73 @@
+-- Select ID of product number 2--
+select product_name,
+		product_id,
+		price
+from products
+where type_id = '2';
+
+--Select all buyers who was born after 01.01.2000--
+select buyer_name,
+	   birthday
+from buyers
+where birthday > '2000.01.01';
+
+--Select all info about orders with xxxx ID--
+select order_id,
+	   buyer_id,
+	   order_number,
+	   order_date,
+	   order_summa
+from orders
+where order_id in (1708,1959,2146);
+
+--Find a price of 'Processor' or 'CPU'--
+select product_name,
+	   price
+from products
+where  product_name like '%Processor%' or product_name like '%CPU%';
+
+--Show all orders from 01.06.2020 to 31.07.2020--
+select order_number,
+	   order_date
+from orders 
+where order_date between '20200601' and '20200731'
+
+--Select all products with ID 1 and more expensive than 5000--
+select product_name, price
+from products
+where type_id = 1 AND price > 5000;
+
+--Select all orders with numbers 151-298 from 30.07.2020--
+select order_number,
+	   order_date,
+	   order_summa
+from orders 
+where order_date = '20200730' or order_number in (151,298);
+
+--Select all ordres with number <400 in May--
+select order_number,
+	   order_date,
+	   order_summa
+from orders
+where order_date between '20200501' and '20200531' and order_number <400;
+
+--Create a table with info about orders and ordered products in June--
+select order_number,
+	   order_date
+from orders
+select product_name,
+	   price
+from products 
+inner join orders on order_id = order_id
+inner join products on product_id = product_id
+where order_date between '2020.06.01' AND '2020.06.30';
+
+--Create a table with info about Zavadil's orders in May--
+select b.buyer_name, o.order_date, p.product_name
+from buyers as b
+inner join orders as o on b.buyer_id = o.buyer_id
+join orders as op on o.order_id = op.order_id
+join products p on op.product_id = p.product_id
+where b.buyer_name = 'Zavadil'
+  and o.order_date between'2020.05.01' AND '2020.05.31'
+  and p.type_id = 1;
