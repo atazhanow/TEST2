@@ -1,0 +1,22 @@
+select distinct order_date
+from orders
+where order_date between '2020.05.01' AND '2020.05.31';
+
+select top 50 percent product_name, price
+from products;
+
+select distinct b.buyer_name
+from buyers as b
+inner join orders as o on b.buyer_id = o.buyer_id
+join orders_products as op on o.order_id = op.order_id
+join products as p on op.product_id = p.product_id
+where p.type_id = 2;
+
+select top (2) b.buyer_name, p.product_name
+from buyers b
+join orders as o on b.buyer_id = o.buyer_id
+join orders_products as op on o.order_id = op.order_id
+join products as p on op.product_id = p.product_id
+where b.buyer_name = 'Сергеев А.С.'
+  and o.order_date between '2020.06.01' AND '2020.06.30'
+  and p.type_id = 1;
