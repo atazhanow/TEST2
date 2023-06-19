@@ -1,26 +1,26 @@
-select p.product_name, p.price 
-from products as p
-inner join relations as r on p.product_id = r.product_id
-inner join orders as o on r.order_id = o.order_id
+select p.product_name, p.price, 
+from products as p,
+inner join relations as r on p.product_id = r.product_id,
+inner join orders as o on r.order_id = o.order_id,
 where o.order_number = 244
 
 intersect 
 
-select p.product_name, p.price
-from products p
-inner join relations as r on p.product_id = r.product_id
-inner join orders as o on r.order_id = o.order_id
+select p.product_name, p.price,
+from products p,
+inner join relations as r on p.product_id = r.product_id,
+inner join orders as o on r.order_id = o.order_id,
 where o.order_number = 352;
 
 --Select function--
-select b.buyer_id, b.buyer_name
-from buyers as b
-inner join orders as o on b.buyer_id = o.buyer_id
+select b.buyer_id, b.buyer_name,
+from buyers as b,
+inner join orders as o on b.buyer_id = o.buyer_id,
 where o.order_date < '20200601'
 
 except
 
-select b.buyer_id, b.buyer_name
-from buyers as b
-inner join orders as o on b.buyer_id = o.buyer_id
-where o.order_date >= '20200601'
+select b.buyer_id, b.buyer_name,
+from buyers as b,
+inner join orders as o on b.buyer_id = o.buyer_id,
+where o.order_date >= '20200601';
