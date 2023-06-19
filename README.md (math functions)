@@ -1,0 +1,12 @@
+--An example of math functions using-- 
+abs (-100) as [ABS],
+round (1.567,2) as [ROUND],
+ceiling (1.6) as [CEILING],
+floor (1.6) as [FLOOR]
+sqrt (16) as [SQRT],
+square (4) as [SQUARE],
+power (4,2) as [POWER],
+log (10) as [LOG];
+
+select Price round (Price / 3,2) as [ROUND]
+from goods
