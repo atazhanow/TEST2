@@ -1,7 +1,7 @@
 --Select and count summa with -10% discount--
-alter table orders add total_summa as (order_summa * (100-10) / 100)
+alter table orders add total_summa as (order_summa * (100-10) / 100),
 go
-select order_number,order_summa, total_summa
-from orders
+select order_number,order_summa, total_summa,
+from orders;
 
-alter table orders drop column total_summa 
+alter table orders drop column total_summa;
