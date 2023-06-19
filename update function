@@ -1,31 +1,31 @@
-select product_name, price
-from products
-where type_id = 1
+select product_name, price,
+from products,
+where type_id = 1;
 
-update products set price = price * (100+10) / 100
-where type_id = 1
+update products set price = price * (100+10) / 100,
+where type_id = 1;
 
-select product_name, price
-from products
-where type_id = 1
+select product_name, price,
+from products,
+where type_id = 1;
 
-select buyer_name, birthday
-from buyers
-where buyer_name = 'Zavadil'
+select buyer_name, birthday,
+from buyers,
+where buyer_name = 'Zavadil';
 
 update buyers set birthday = '19780123'
 
-select buyer_name, birthday
-from buyers
+select buyer_name, birthday,
+from buyers,
 where buyer_name = 'Zavadil'
 
-select product_name, description 
-from products
-where description is null
+select product_name, description,
+from products,
+where description is null;
 
-update products set description = 'No description
-where description is null
+update products set description = 'No description',
+where description is null;
 
-select product_name, description 
-from products
-where description = 'No description'
+select product_name, description,
+from products,
+where description = 'No description';
