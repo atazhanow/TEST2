@@ -1,0 +1,10 @@
+select OrderDate as [ORDER DATE],
+getdate () as [TODAY],
+datename (M, OrderDate) as [Month name],
+datepart (M, OrderDate) as [MONTH NUMBER],
+day (OrderDate) as [DAY], month (OrderDate) as [MONTH], year (OrderDate) as [YEAR],
+datediff (D, '01.11.2019', OrderDate) as [AMOUNT OF DAYS],
+dateadd (D, 5, OrederDate) as [+5 DAYS]
+isdate (OrderDate) as [IS IT DATE?]
+from goods
+--in DATETIME functions is possible use M as month, D as Day, H as hours--
