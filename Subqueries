@@ -1,0 +1,28 @@
+--Determination of the number of goods--
+select С.CategoryName AS [CategoryName],
+       (select count(*)
+        from Goods G
+        where G.Category = С.CategoryId) as [goodquantity]
+from Categories С
+
+--Example of join a few columns with JOIN connection--
+select ProductId, ProductName
+from (select ProductId, ProductName
+      from Goods
+      where Category = 1) as Query;
+
+--Specifying a derived Tables in JOIN connections--
+select Q1.ProductId, Q1.Price, Q2.CategoryName
+from (select ProductId, Price, Category
+      from Goods) as Q1
+inner join (select CategoryId, CategoryName
+            from Categories) as Q2 ON Q1.Category = Q2.CategoryId
+
+--Multiple nested query--
+select ProductId, ProductName
+from (select ProductId, ProductName
+      from Goods
+     where Category = (select CategoryId
+                        from Categories
+                        where CategoryName = 'Мобильные устройства')
+      ) as Query;
